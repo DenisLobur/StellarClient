@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import stellar.client.den.stellar.R;
 import stellar.client.den.stellar.common.BasePresenter;
 import stellar.client.den.stellar.common.Router;
 import stellar.client.den.stellar.model.Item;
@@ -21,7 +22,7 @@ public class MainPresenter extends BasePresenter<MainView, Router> {
 
     private StellarApi stellarApi;
     private static Scheduler scheduler = Schedulers.from(Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()));
-    AtomicInteger increment = new AtomicInteger();
+    AtomicInteger increment = new AtomicInteger(-1);
 
     @Inject
     public MainPresenter(StellarApi stellarApi) {
@@ -30,7 +31,7 @@ public class MainPresenter extends BasePresenter<MainView, Router> {
 
     public void fetchItems() {
         int i = increment.incrementAndGet();
-        stellarApi.getItems(0)
+        stellarApi.getItems(i)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(scheduler)
                 //.map(it -> Log.d("result", it.toString()))
@@ -38,7 +39,7 @@ public class MainPresenter extends BasePresenter<MainView, Router> {
                     Log.d("result", pageResult.toString());
                     getView().fillStellarList(pageResult);
                 }, throwable -> {
-                    Throwable th = throwable;
+                    getView().showError(R.string.page_loading_error);
                 });
     }
 

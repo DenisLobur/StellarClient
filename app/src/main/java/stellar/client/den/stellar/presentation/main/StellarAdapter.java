@@ -55,6 +55,9 @@ public class StellarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private static final int MAX_WIDTH = 100;
+        private static final int MAX_HEIGHT = 100;
+
         @BindView(R.id.img)
         ImageView image;
         @BindView(R.id.name)
@@ -71,9 +74,16 @@ public class StellarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         void bindData(Item item) {
-            Picasso.with(context).load(item.getStellaPicture()).error(R.mipmap.ic_launcher).resize(50, 50).into(image);
-            name.setText(checkEmptyName(item.getStellaName()));
-            description.setText(checkEmptyDescription(item.getStellaDescription()));
+            Picasso.with(context)
+                    .load(item.getStellarPicture())
+                    .transform(new BitmapTransform(MAX_WIDTH, MAX_HEIGHT))
+                    .resize(50, 50)
+                    .centerInside()
+                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(image);
+            name.setText(checkEmptyName(item.getStellarName()));
+            description.setText(checkEmptyDescription(item.getStellarDescription()));
         }
     }
 

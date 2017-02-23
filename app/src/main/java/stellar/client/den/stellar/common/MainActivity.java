@@ -11,6 +11,7 @@ import stellar.client.den.stellar.injection.modules.ContextModule;
 import stellar.client.den.stellar.injection.modules.NetworkModule;
 import stellar.client.den.stellar.injection.modules.RestApiModule;
 import stellar.client.den.stellar.model.Item;
+import stellar.client.den.stellar.presentation.detail.DetailFragment;
 import stellar.client.den.stellar.presentation.main.MainFragment;
 
 @Layout(id = R.layout.activity_main)
@@ -55,7 +56,7 @@ public class MainActivity extends BaseActivity implements Router {
 
     @Override
     public void showDetails(Item item) {
-        //addBackStack(DetailFragment.newInstance(photo));
+        addBackStack(DetailFragment.newInstance(item));
     }
 
     public MainActivityComponent getMainActivityComponent() {

@@ -6,5 +6,6 @@
     <dimen name="item_height">110dp</dimen>
     <dimen name="img_padding">5dp</dimen>
     <dimen name="text_padding">10dp</dimen>
-    <dimen name="text_size">24sp</dimen>
+    <dimen name="text_size_main">24sp</dimen>
+    <dimen name="text_size_description">14sp</dimen>
 </resources>

@@ -9,32 +9,32 @@ import java.io.Serializable;
 public class Item implements Serializable {
     @SerializedName("name")
     @Expose
-    private String stellaName;
+    private String stellarName;
     @SerializedName("image_url")
     @Expose
-    private String stellaPicture;
+    private String stellarPicture;
     @SerializedName("description")
     @Expose
-    private String stellaDescription;
+    private String stellarDescription;
 
-    public String getStellaName() {
-        return stellaName;
+    public String getStellarName() {
+        return stellarName;
     }
 
-    public String getStellaPicture() {
-        return stellaPicture;
+    public String getStellarPicture() {
+        return stellarPicture;
     }
 
-    public String getStellaDescription() {
-        return stellaDescription;
+    public String getStellarDescription() {
+        return stellarDescription;
     }
 
     @Override
     public String toString() {
         return "Item{" +
-                "stellaName='" + stellaName + '\'' +
-                ", stellaPicture='" + stellaPicture + '\'' +
-                ", stellaDescription='" + stellaDescription + '\'' +
+                "stellaName='" + stellarName + '\'' +
+                ", stellaPicture='" + stellarPicture + '\'' +
+                ", stellaDescription='" + stellarDescription + '\'' +
                 '}';
     }
 }

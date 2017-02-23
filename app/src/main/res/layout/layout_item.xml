@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_height"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@drawable/press_selector">
 
     <ImageView
         android:id="@+id/img"
@@ -22,7 +23,7 @@
             android:layout_marginLeft="@dimen/text_padding"
             android:layout_marginTop="@dimen/text_padding"
             android:gravity="center_vertical"
-            android:textSize="@dimen/text_size"/>
+            android:textSize="@dimen/text_size_main" />
 
         <TextView
             android:id="@+id/description"
@@ -30,8 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_padding"
             android:layout_marginTop="@dimen/text_padding"
+            android:ellipsize="marquee"
             android:gravity="center_vertical"
-            android:textSize="@dimen/text_size"/>
+            android:lines="2"
+            android:textSize="@dimen/text_size_description" />
     </LinearLayout>
-
 </LinearLayout>
