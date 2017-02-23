@@ -4,9 +4,10 @@ package stellar.client.den.stellar.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Page {
+public class Page implements Serializable {
     @SerializedName("page")
     @Expose
     private Integer currentPage;

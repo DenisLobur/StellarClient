@@ -14,10 +14,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import stellar.client.den.stellar.injection.components.MainActivityComponent;
 
 
 public abstract class BaseFragment extends Fragment implements BaseView {
 
+    protected static final String TAG = BaseFragment.class.getSimpleName();
     private static final AtomicInteger lastFragmentId = new AtomicInteger(0);
     private final int fragmentId;
     private Unbinder unbinder;
@@ -78,6 +80,10 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     public String getFragmentName() {
         return Long.toString(fragmentId);
+    }
+
+    protected MainActivityComponent getMainActivityComponent() {
+        return ((MainActivity)getActivity()).getMainActivityComponent();
     }
 
     @NonNull

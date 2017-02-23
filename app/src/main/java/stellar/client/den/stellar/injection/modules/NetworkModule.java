@@ -1,11 +1,12 @@
 package stellar.client.den.stellar.injection.modules;
 
+import android.util.Log;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import stellar.client.den.stellar.injection.scopes.ApplicationScope;
-import timber.log.Timber;
 
 @Module
 public class NetworkModule {
@@ -13,7 +14,7 @@ public class NetworkModule {
     @Provides
     @ApplicationScope
     public HttpLoggingInterceptor loggingInterceptor() {
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> Timber.i(message));
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> Log.i("Network: ", message));
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         return loggingInterceptor;
     }

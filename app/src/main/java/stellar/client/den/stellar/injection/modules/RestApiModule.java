@@ -15,7 +15,7 @@ import stellar.client.den.stellar.net.StellarApi;
 @Module(includes = NetworkModule.class)
 public class RestApiModule {
 
-    private static final String BASE_URL = "http://54.202.245.89:3000/page/";
+    private static final String BASE_URL = "http://54.202.245.89:3000/";
 
     @Provides
     @ApplicationScope
@@ -34,9 +34,9 @@ public class RestApiModule {
     @ApplicationScope
     public Retrofit retrofit(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit.Builder()
-                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .client(okHttpClient)
                 .baseUrl(BASE_URL)
                 .build();
     }
