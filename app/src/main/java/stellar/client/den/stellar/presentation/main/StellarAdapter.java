@@ -3,6 +3,7 @@ package stellar.client.den.stellar.presentation.main;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,9 +71,9 @@ public class StellarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         void bindData(Item item) {
-            Picasso.with(context).load(item.getStellaPicture()).into(image);
-            name.setText(item.getStellaName());
-            description.setText(item.getStellaDescription());
+            Picasso.with(context).load(item.getStellaPicture()).error(R.mipmap.ic_launcher).resize(50, 50).into(image);
+            name.setText(checkEmptyName(item.getStellaName()));
+            description.setText(checkEmptyDescription(item.getStellaDescription()));
         }
     }
 
@@ -102,5 +103,13 @@ public class StellarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         itemList.addAll(pageList.get(pageList.size() - 1).getItems());
         notifyDataSetChanged();
         isLoading = false;
+    }
+
+    private String checkEmptyName(String name) {
+        return TextUtils.isEmpty(name) ? context.getString(R.string.no_name) : name;
+    }
+
+    private String checkEmptyDescription(String description) {
+        return TextUtils.isEmpty(description) ? context.getString(R.string.no_description) : description;
     }
 }
